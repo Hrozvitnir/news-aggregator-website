@@ -1,0 +1,13 @@
+services:
+  front-end:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports: 
+      - "3000:3000"
+    command: "npm start"
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://0.0.0.0:3000/"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
